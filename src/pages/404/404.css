@@ -1,0 +1,15 @@
+.error-page {
+  display: flex;
+}
+
+.error-wrapper {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.error-message {
+  display: inline-block;
+}
