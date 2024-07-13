@@ -1,4 +1,4 @@
-export default `<div class="login-page">
+export default `<main class="login-page">
   <form class="form" action="">
     <h1 class="h1">Вход</h1>
     <div class="field">
@@ -13,4 +13,4 @@ export default `<div class="login-page">
     <button onclick="goToPage('main')" class="button">Логин</button>
     <button onclick="goToPage('signin')" class="button-link">Нет аккаунта?</button>
   </form>
-</div>`;
+</main>`;

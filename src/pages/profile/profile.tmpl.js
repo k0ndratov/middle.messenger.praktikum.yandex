@@ -1,5 +1,5 @@
 export default `
-  <div class="profile-page">
+  <main class="profile-page">
   <form class="form" action="">
   <img class="avatar" src="./avatar-stub.svg" alt="avatar">
       <h1 class="h1">Иван</h1>

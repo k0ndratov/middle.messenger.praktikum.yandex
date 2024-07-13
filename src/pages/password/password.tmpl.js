@@ -1,5 +1,5 @@
 export default `
-<div class="password-page">
+<main class="password-page">
   <form class="form" action="">
       <h1 class="h1">Сменить пароль</h1>
       <div class="field">
@@ -20,5 +20,5 @@ export default `
       <button onclick="goToPage('profile')" class="button">Сохранить</button>
       <button onclick="goToPage('profile')" class="button-link">Назад</button>
     </form>
-  </div>
+  </main>
 `;

@@ -1,4 +1,4 @@
-export default `<div class="signin-page">
+export default `<main class="signin-page">
   <form class="form" action="">
     <h1 class="h1">Регистрация</h1>
     <div class="field">
@@ -33,4 +33,4 @@ export default `<div class="signin-page">
     <button class="button" onclick="goToPage('main')">Зарегистрироваться</button>
     <button onclick="goToPage('login')" class="button-link">Войти</button>
   </form>
-</div>`;
+</main>`;
