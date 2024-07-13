@@ -28,7 +28,7 @@ export default `
         <label class="label" for=""> Телефон </label>
         <input class="input" type="phone" name="phone" />
       </div>
-      <button onclick="goToPage('main')" class="button">Сохранить</button>
+      <button onclick="goToPage('chat')" class="button">Сохранить</button>
       <button onclick="goToPage('password')" class="button-link">Изменить пароль</button>
       <button onclick="goToPage('login')" class="button-link">Выйти</button>
     </form>

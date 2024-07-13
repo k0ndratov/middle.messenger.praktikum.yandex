@@ -30,7 +30,7 @@ export default `<main class="signin-page">
       <label class="label" for=""> Пароль (еще раз) </label>
       <input class="input" type="password" name="password_confirm" />
     </div>
-    <button class="button" onclick="goToPage('main')">Зарегистрироваться</button>
+    <button class="button" onclick="goToPage('chat')">Зарегистрироваться</button>
     <button onclick="goToPage('login')" class="button-link">Войти</button>
   </form>
 </main>`;

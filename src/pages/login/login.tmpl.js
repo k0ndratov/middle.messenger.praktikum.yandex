@@ -10,7 +10,7 @@ export default `<main class="login-page">
       <label class="label" for="">Пароль</label>
       <input class="input" type="text" />
     </div>
-    <button onclick="goToPage('main')" class="button">Логин</button>
+    <button onclick="goToPage('chat')" class="button">Логин</button>
     <button onclick="goToPage('signin')" class="button-link">Нет аккаунта?</button>
   </form>
 </main>`;

@@ -1,6 +1,6 @@
 import LoginPage from "./pages/login/login.js";
 import SignInPage from "./pages/signin/signin.js";
-import MainPage from "./pages/main/main.js";
+import ChatPage from "./pages/chat/chat.js";
 import ProfilePage from "./pages/profile/profile.js";
 import PasswordPage from "./pages/password/password.js";
 import NavigationPage from "./pages/navigation/navigation.js";
@@ -14,7 +14,7 @@ const ROUTES = {
   signin: SignInPage,
   login: LoginPage,
   profile: ProfilePage,
-  main: MainPage,
+  chat: ChatPage,
   password: PasswordPage,
   404: Error404Page,
   500: Error500Page,
