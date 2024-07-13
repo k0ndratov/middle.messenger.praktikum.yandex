@@ -1,10 +1,10 @@
 export default `<div class="main-page"><aside class="aside">
       <div class="aside__header">
         <div class="aside__header-info">
-          <a href="/profile">
+          <button onclick="goToPage('profile')" class="aside__header-info-button">
             <span class="aside__header-title">Профиль</span>
             <img src="./arrow.svg" alt="arrow" />
-          </a>
+          </button>
         </div>
         <input class="input" type="search" />
       </div>

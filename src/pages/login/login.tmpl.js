@@ -10,7 +10,7 @@ export default `<div class="login-page">
       <label class="label" for="">Пароль</label>
       <input class="input" type="text" />
     </div>
-    <a href="/main" class="button">Войти</a>
-    <a href="/signin">Нет аккаунта?</a>
+    <button onclick="goToPage('main')" class="button">Логин</button>
+    <button onclick="goToPage('signin')" class="button-link">Нет аккаунта?</button>
   </form>
 </div>`;

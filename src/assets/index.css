@@ -4,6 +4,7 @@
 
 @import url("./typography/headings.css");
 @import url("./buttons/button.css");
+@import url("./buttons/button-link.css");
 @import url("./inputs/input.css");
 @import url("./fields/field.css");
 @import url("./labels/label.css");
@@ -32,4 +33,8 @@ body {
 a {
   color: var(--light-100);
   text-decoration: none;
+}
+
+#app {
+  height: 100vh;
 }

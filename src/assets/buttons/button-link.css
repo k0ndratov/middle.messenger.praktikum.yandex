@@ -1,0 +1,6 @@
+.button-link {
+  background-color: transparent;
+  border: 0;
+  color: var(--primary);
+  cursor: pointer;
+}

@@ -28,9 +28,9 @@ export default `
         <label class="label" for=""> Телефон </label>
         <input class="input" type="phone" name="phone" />
       </div>
-      <button class="button" type="submit">Сохранить</button>
-      <a href="/password">Изменить пароль</a>
-      <a href="/login">Выйти</a>
+      <button onclick="goToPage('main')" class="button">Сохранить</button>
+      <button onclick="goToPage('password')" class="button-link">Изменить пароль</button>
+      <button onclick="goToPage('login')" class="button-link">Выйти</button>
     </form>
   </div>
 `;

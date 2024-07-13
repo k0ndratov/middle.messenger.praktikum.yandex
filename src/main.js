@@ -9,28 +9,26 @@ import Error500Page from "./pages/500/500.js";
 
 import "./assets/index.css";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById("app");
+const ROUTES = {
+  navigation: NavigationPage,
+  signin: SignInPage,
+  login: LoginPage,
+  profile: ProfilePage,
+  main: MainPage,
+  password: PasswordPage,
+  404: Error404Page,
+  500: Error500Page,
+};
 
-  const currentPagePathname = window.location.pathname;
-  const getPage = function () {
-    switch (currentPagePathname) {
-      case "/login":
-        return LoginPage();
-      case "/signin":
-        return SignInPage();
-      case "/main":
-        return MainPage();
-      case "/profile":
-        return ProfilePage();
-      case "/password":
-        return PasswordPage();
-      case "/500":
-        return Error500Page();
-      default:
-        return Error404Page();
-    }
-  };
-  root.innerHTML = NavigationPage();
-  root.innerHTML += getPage();
-});
+const render = (page) => {
+  const root = document.getElementById("app");
+  console.log(page);
+  root.innerHTML = page();
+};
+
+window.goToPage = (routeName) => {
+  const page = ROUTES[routeName];
+  render(page);
+};
+
+document.addEventListener("DOMContentLoaded", () => render(NavigationPage));

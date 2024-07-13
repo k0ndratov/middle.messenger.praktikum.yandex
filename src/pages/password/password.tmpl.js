@@ -17,8 +17,8 @@ export default `
         <input class="input" type="password" name="newPasswordSubmit"/>
         <span class="error-label">Неверная почта</span>
       </div>
-      <button class="button" type="submit">Сохранить</button>
-      <a href="/profile">Назад</a>
+      <button onclick="goToPage('profile')" class="button">Сохранить</button>
+      <button onclick="goToPage('profile')" class="button-link">Назад</button>
     </form>
   </div>
 `;

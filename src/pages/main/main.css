@@ -6,9 +6,10 @@
 .aside {
   display: flex;
   flex-direction: column;
+  box-sizing: border-box;
   border: 1px solid black;
   width: 25%;
-  height: calc(100vh - 20px);
+  height: 100vh;
   background-color: var(--dark-300);
 }
 
@@ -93,10 +94,18 @@
   border: 1px solid var(--dark-200);
 }
 
+.aside__header-info-button {
+  background-color: transparent;
+  border: 0;
+  color: var(--white);
+  cursor: pointer;
+}
+
 .aside__dialogs {
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  overflow-x: hidden;
   flex-grow: 1;
   align-items: start;
 }
