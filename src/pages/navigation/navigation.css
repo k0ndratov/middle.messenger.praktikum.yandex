@@ -1,8 +1,0 @@
-.navigation__list {
-  display: flex;
-  flex-direction: row;
-}
-
-.navigation__list-item {
-  display: flex;
-}

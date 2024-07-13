@@ -1,4 +1,4 @@
-export default `<main class="signin-page">
+export default `<main class="flex-wrapper">
   <form class="form" action="">
     <h1 class="h1">Регистрация</h1>
     <div class="field">

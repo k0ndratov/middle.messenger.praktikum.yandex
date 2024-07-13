@@ -1,5 +1,5 @@
 export default `
-<main class="password-page">
+<main class="flex-wrapper">
   <form class="form" action="">
       <h1 class="h1">Сменить пароль</h1>
       <div class="field">
