@@ -1,5 +1,6 @@
 .error-page {
   display: flex;
+  height: 100vh;
 }
 
 .error-wrapper {
