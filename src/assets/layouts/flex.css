@@ -1,0 +1,17 @@
+.flex {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flex-row {
+  @extend .flex;
+
+  flex-direction: row;
+}
+
+.flex-wrapper {
+  @extend .flex;
+
+  height: 100%;
+}
