@@ -1,0 +1,12 @@
+<div class="field">
+  <label class="label" for="">{{label}}</label>
+  {{{Input
+    name=name
+    type=type
+    style=style
+    ref="input"
+    onBlur=onBlur
+    value=value
+  }}}
+  {{#if error}}<span class="error-label">{{error}}</span>{{/if}}
+</div>
