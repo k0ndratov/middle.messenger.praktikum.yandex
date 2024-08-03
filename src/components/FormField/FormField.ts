@@ -30,7 +30,7 @@ export default class FormField extends Block {
   }
 
   private _validate() {
-    const inputElement = this.refs["input"].element as HTMLInputElement;
+    const inputElement = this.refs.input.element as HTMLInputElement;
 
     return VALIDATION_RULES[inputElement.name].test(inputElement.value);
   }
@@ -41,14 +41,13 @@ export default class FormField extends Block {
     if (isValid) {
       this.setProps({ ...this.props, error: null, value: this._value() });
       return true;
-    } else {
-      const inputElement = this.refs["input"].element as HTMLInputElement;
-      this.setProps({
-        ...this.props,
-        error: VALIDATION_ERRORS[inputElement.name],
-        value: this._value(),
-      });
-      return false;
     }
+    const inputElement = this.refs.input.element as HTMLInputElement;
+    this.setProps({
+      ...this.props,
+      error: VALIDATION_ERRORS[inputElement.name],
+      value: this._value(),
+    });
+    return false;
   }
 }

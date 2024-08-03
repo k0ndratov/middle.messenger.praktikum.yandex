@@ -11,7 +11,7 @@ export default class ChatPage extends Block {
       onSend: (e: Event) => {
         e.preventDefault();
 
-        const message = (this.refs["message"] as FormField).value();
+        const message = (this.refs.message as FormField).value();
 
         console.table({ message });
       },

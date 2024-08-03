@@ -9,12 +9,12 @@ export default class PasswordPage extends Block {
       onChange: (e: Event) => {
         e.preventDefault();
 
-        const oldPassword = (this.refs["password"] as FormField).value();
+        const oldPassword = (this.refs.password as FormField).value();
         const newPassword = (
-          this.refs["password_confirm"] as FormField
+          this.refs.password_confirm as FormField
         ).value();
         const newPasswordSubmit = (
-          this.refs["password_confirm"] as FormField
+          this.refs.password_confirm as FormField
         ).value();
 
         console.table({

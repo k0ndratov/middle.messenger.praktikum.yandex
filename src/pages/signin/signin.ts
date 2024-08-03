@@ -9,13 +9,13 @@ export default class SignInPage extends Block {
       onSignin: (e: Event) => {
         e.preventDefault();
 
-        const login = (this.refs["login"] as FormField).value();
-        const first_name = (this.refs["first_name"] as FormField).value();
-        const second_name = (this.refs["second_name"] as FormField).value();
-        const email = (this.refs["email"] as FormField).value();
-        const phone = (this.refs["phone"] as FormField).value();
-        const password = (this.refs["password"] as FormField).value();
-        const password2 = (this.refs["password_confirm"] as FormField).value();
+        const login = (this.refs.login as FormField).value();
+        const first_name = (this.refs.first_name as FormField).value();
+        const second_name = (this.refs.second_name as FormField).value();
+        const email = (this.refs.email as FormField).value();
+        const phone = (this.refs.phone as FormField).value();
+        const password = (this.refs.password as FormField).value();
+        const password2 = (this.refs.password_confirm as FormField).value();
 
         console.table({
           login,
