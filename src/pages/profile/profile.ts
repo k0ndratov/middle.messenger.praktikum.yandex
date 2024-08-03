@@ -9,11 +9,11 @@ export default class ProfilePage extends Block {
       onSave: (e: Event) => {
         e.preventDefault();
 
-        const login = (this.refs["login"] as FormField).value();
-        const first_name = (this.refs["first_name"] as FormField).value();
-        const second_name = (this.refs["second_name"] as FormField).value();
-        const display_name = (this.refs["display_name"] as FormField).value();
-        const phone = (this.refs["phone"] as FormField).value();
+        const login = (this.refs.login as FormField).value();
+        const first_name = (this.refs.first_name as FormField).value();
+        const second_name = (this.refs.second_name as FormField).value();
+        const display_name = (this.refs.display_name as FormField).value();
+        const phone = (this.refs.phone as FormField).value();
 
         console.table({
           login,

@@ -18,4 +18,4 @@ indent_style = space
 indent_size = 2
 
 # Max 120 characters per line
-max_line_length = 120
+max_line_length = 180

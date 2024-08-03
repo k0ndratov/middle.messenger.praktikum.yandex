@@ -1,6 +1,6 @@
-import EventBus from "./EventBus";
 import Handlebars from "handlebars";
 import { v4 as uuidv4 } from "uuid";
+import EventBus from "./EventBus";
 
 export default class Block {
   static EVENTS = {
@@ -13,9 +13,13 @@ export default class Block {
   private _element: HTMLElement | null = null;
 
   public eventBus: () => EventBus;
+
   public props: Record<string, unknown>;
+
   public children: Record<string, Block>;
+
   public refs: Record<string, Block> = {};
+
   public id: string | null = null;
 
   constructor(propsAndChildren = {}) {
@@ -69,10 +73,7 @@ export default class Block {
     this.eventBus().emit(Block.EVENTS.FLOW_CDM);
   }
 
-  _componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>
-  ): void {
+  _componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>): void {
     const response = this.componentDidUpdate(oldProps, newProps);
     if (!response) {
       return;
@@ -80,10 +81,7 @@ export default class Block {
     this._render();
   }
 
-  componentDidUpdate(
-    oldProps: Record<string, unknown>,
-    newProps: Record<string, unknown>
-  ) {
+  componentDidUpdate(oldProps: Record<string, unknown>, newProps: Record<string, unknown>) {
     return !!(oldProps && newProps);
   }
 
@@ -130,10 +128,11 @@ export default class Block {
 
     temp.innerHTML = html;
 
-    if (propsAndStubs.__children instanceof Array)
+    if (propsAndStubs.__children instanceof Array) {
       propsAndStubs.__children?.forEach(({ insert }) => {
         insert(temp.content);
       });
+    }
     return temp.content;
   }
 
@@ -145,7 +144,10 @@ export default class Block {
     const { events = {} } = this.props as Record<string, () => void>;
 
     Object.entries(events).forEach(([event, listener]) => {
-      const eventListener = listener as EventListenerOrEventListenerObject;
+      // TODO: Почему то eslint думает, что EventListener
+      // is undeff
+      // eslint-disable-next-line no-undef
+      const eventListener = listener as EventListener;
       this._element?.addEventListener(event, eventListener);
     });
   }
@@ -164,6 +166,8 @@ export default class Block {
         const oldTarget = { ...target };
         const newTarget = { ...target, [prop]: value };
 
+        // TODO: Не уверен, нарущаю ли что-то этим.
+        // eslint-disable-next-line no-param-reassign
         target[prop] = value;
 
         // Запускаем обновление компоненты

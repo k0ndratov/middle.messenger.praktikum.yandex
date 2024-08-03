@@ -51,6 +51,4 @@ window.goToPage = (routeName) => {
   render(page);
 };
 
-document.addEventListener("DOMContentLoaded", () =>
-  render(ROUTES["navigation"])
-);
+document.addEventListener("DOMContentLoaded", () => render(ROUTES.navigation));

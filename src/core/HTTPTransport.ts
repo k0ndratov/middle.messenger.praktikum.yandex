@@ -6,14 +6,8 @@ const METHODS = {
 };
 
 function queryStringify(data: Record<string, unknown>) {
-  if (typeof data !== "object") {
-    throw new Error("Data must be object");
-  }
-
   const keys = Object.keys(data);
-  return keys.reduce((result, key, index) => {
-    return `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`;
-  }, "?");
+  return keys.reduce((result, key, index) => `${result}${key}=${data[key]}${index < keys.length - 1 ? "&" : ""}`, "?");
 }
 
 type HTTPTransportOptions = {
@@ -23,36 +17,20 @@ type HTTPTransportOptions = {
 };
 
 export default class HTTPTransport {
-  get = (url: string, options: HTTPTransportOptions = {}, timeout: number) => {
-    return this.request(url, { ...options, method: METHODS.GET }, timeout);
-  };
+  get = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.GET }, timeout);
 
-  post = (url: string, options: HTTPTransportOptions = {}, timeout: number) => {
-    return this.request(url, { ...options, method: METHODS.POST }, timeout);
-  };
+  post = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.POST }, timeout);
 
-  put = (url: string, options: HTTPTransportOptions = {}, timeout: number) => {
-    return this.request(url, { ...options, method: METHODS.PUT }, timeout);
-  };
+  put = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.PUT }, timeout);
 
-  delete = (
-    url: string,
-    options: HTTPTransportOptions = {},
-    timeout: number
-  ) => {
-    return this.request(url, { ...options, method: METHODS.DELETE }, timeout);
-  };
+  delete = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.DELETE }, timeout);
 
-  request = (
-    url: string,
-    options: HTTPTransportOptions = {},
-    timeout: number = 5000
-  ) => {
+  request = (url: string, options: HTTPTransportOptions = {}, timeout: number = 5000) => {
     const { headers = {}, method, data } = options;
 
-    return new Promise(function (resolve, reject) {
+    return new Promise((resolve, reject) => {
       if (!method) {
-        reject("No method");
+        reject(new Error("No method"));
         return;
       }
 
