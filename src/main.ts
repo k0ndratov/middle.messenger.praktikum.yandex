@@ -7,25 +7,37 @@ import NavigationPage from "./pages/navigation/navigation.ts";
 import Error404Page from "./pages/404/404.ts";
 import Error500Page from "./pages/500/500.ts";
 
+import Block from "./core/Block.ts";
+
+import Input from "./components/Input/Input.ts";
+import FormField from "./components/FormField/FormField.ts";
+import Form from "./components/Form/Form.ts";
+
 import "./assets/index.css";
+import { registerComponent } from "./core/utils/registerComponent.ts";
 
-type Page = Handlebars.TemplateDelegate<any>;
+registerComponent("Input", Input);
+registerComponent("FormField", FormField);
+registerComponent("Form", Form);
 
-const ROUTES: { [key: string]: Page } = {
-  navigation: NavigationPage,
-  signin: SignInPage,
-  login: LoginPage,
-  profile: ProfilePage,
-  chat: ChatPage,
-  password: PasswordPage,
-  404: Error404Page,
-  500: Error500Page,
+const ROUTES: Record<string, Block> = {
+  navigation: new NavigationPage({}),
+  signin: new SignInPage({}),
+  login: new LoginPage({}),
+  profile: new ProfilePage({}),
+  chat: new ChatPage({}),
+  password: new PasswordPage({}),
+  404: new Error404Page({}),
+  500: new Error500Page({}),
 };
 
-const render = (page: Page) => {
+const render = (page: Block) => {
   const root = document.getElementById("app");
-
-  if (root) root.innerHTML = page({});
+  if (root) {
+    root.innerHTML = "";
+    root.appendChild(page.element as HTMLElement);
+    page.dispatchComponentDidMount();
+  }
 };
 
 declare global {
@@ -39,4 +51,6 @@ window.goToPage = (routeName) => {
   render(page);
 };
 
-document.addEventListener("DOMContentLoaded", () => render(NavigationPage));
+document.addEventListener("DOMContentLoaded", () =>
+  render(ROUTES["navigation"])
+);

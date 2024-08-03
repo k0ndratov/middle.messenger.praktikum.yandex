@@ -207,3 +207,8 @@
   align-items: center;
   margin-right: 8px;
 }
+
+.form__chat {
+  display: flex;
+  flex-direction: row !important;
+}
