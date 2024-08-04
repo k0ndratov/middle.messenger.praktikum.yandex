@@ -1,7 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
-
 @import url("./reset.css");
-
 @import url("./typography/headings.css");
 @import url("./buttons/button.css");
 @import url("./buttons/button-link.css");
@@ -15,18 +13,16 @@
   --dark-100: #0a0a0a;
   --dark-200: #141414;
   --dark-300: #1f1f1f;
-
-  --light-100: rgb(212, 211, 211);
-
-  --primary: rgb(38, 124, 254);
-  --primary-dark: rgb(26, 63, 118);
+  --light-100: rgb(212 211 211);
+  --primary: rgb(38 124 254);
+  --primary-dark: rgb(26 63 118);
   --font-size-h1: 25px;
 }
 
 body {
   background-color: var(--dark-200);
   color: var(--light-100);
-  font-family: "Montserrat", sans-serif;
+  font-family: Montserrat, sans-serif;
   font-size: 16px;
 }
 
