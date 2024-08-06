@@ -78,6 +78,7 @@ export default class Block {
     if (!response) {
       return;
     }
+    this._removeEvents();
     this._render();
   }
 
@@ -149,6 +150,18 @@ export default class Block {
       // eslint-disable-next-line no-undef
       const eventListener = listener as EventListener;
       this._element?.addEventListener(event, eventListener);
+    });
+  }
+
+  private _removeEvents() {
+    const { events = {} } = this.props as Record<string, () => void>;
+
+    Object.entries(events).forEach(([event, listener]) => {
+      // TODO: Почему то eslint думает, что EventListener
+      // is undeff
+      // eslint-disable-next-line no-undef
+      const eventListener = listener as EventListener;
+      this._element?.removeEventListener(event, eventListener);
     });
   }
 
