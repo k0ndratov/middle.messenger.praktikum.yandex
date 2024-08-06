@@ -2,7 +2,11 @@ import template from "./profile.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 
-export default class ProfilePage extends Block {
+interface ProfilePageProps {
+  [key: string]: unknown;
+}
+
+export default class ProfilePage extends Block<ProfilePageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,

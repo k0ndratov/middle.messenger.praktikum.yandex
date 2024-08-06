@@ -16,11 +16,11 @@ import Form from "./components/Form/Form.ts";
 import "./assets/index.css";
 import { registerComponent } from "./core/utils/registerComponent.ts";
 
-registerComponent("Input", Input);
-registerComponent("FormField", FormField);
-registerComponent("Form", Form);
+registerComponent("Input", Input as typeof Block);
+registerComponent("FormField", FormField as typeof Block);
+registerComponent("Form", Form as typeof Block);
 
-const ROUTES: Record<string, Block> = {
+const ROUTES: Record<string, Block<Record<string, unknown>>> = {
   navigation: new NavigationPage({}),
   signin: new SignInPage({}),
   login: new LoginPage({}),
@@ -31,7 +31,7 @@ const ROUTES: Record<string, Block> = {
   500: new Error500Page({}),
 };
 
-const render = (page: Block) => {
+const render = (page: Block<Record<string, unknown>>) => {
   const root = document.getElementById("app");
   if (root) {
     root.innerHTML = "";

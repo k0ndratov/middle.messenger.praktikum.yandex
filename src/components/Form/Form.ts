@@ -1,7 +1,14 @@
 import Block from "../../core/Block";
 import template from "./Form.hbs?raw";
 
-export default class Form extends Block {
+interface FormProps {
+  onSubmit: () => void;
+  title?: string;
+  style?: string;
+  [key: string]: unknown;
+}
+
+export default class Form extends Block<FormProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,

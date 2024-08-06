@@ -1,13 +1,12 @@
 import Block from "../../core/Block";
 import template from "./FormField.hbs?raw";
-import {
-  VALIDATION_RULES,
-  VALIDATION_ERRORS,
-} from "../../core/utils/validations";
+import { VALIDATION_RULES, VALIDATION_ERRORS } from "../../core/utils/validations";
 
-interface FormFieldProps {}
+interface FormFieldProps {
+  [key: string]: unknown;
+}
 
-export default class FormField extends Block {
+export default class FormField extends Block<FormFieldProps> {
   constructor(props: FormFieldProps) {
     super({
       ...props,

@@ -3,7 +3,11 @@ import "./chat.css";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 
-export default class ChatPage extends Block {
+interface ChatPageProps {
+  [key: string]: unknown;
+}
+
+export default class ChatPage extends Block<ChatPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,

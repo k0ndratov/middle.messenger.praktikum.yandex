@@ -2,7 +2,7 @@ import Handlebars from "handlebars";
 import { v4 as uuidv4 } from "uuid";
 import EventBus from "./EventBus";
 
-export default class Block {
+export default class Block<Props extends Record<string, unknown>> {
   static EVENTS = {
     INIT: "init",
     FLOW_CDM: "flow:component-did-mount",
@@ -14,11 +14,11 @@ export default class Block {
 
   public eventBus: () => EventBus;
 
-  public props: Record<string, unknown>;
+  public props: Props;
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block<Props>>;
 
-  public refs: Record<string, Block> = {};
+  public refs: Record<string, Block<Props>> = {};
 
   public id: string | null = null;
 
@@ -29,8 +29,10 @@ export default class Block {
 
     const { props, children } = this._getPropsAndChildren(propsAndChildren);
 
+    const propsWithId = { ...props, __id: this.id };
+
     this.children = children;
-    this.props = this._makePropsProxy({ ...props, __id: this.id });
+    this.props = this._makePropsProxy(propsWithId);
 
     this.eventBus = () => eventBus;
 
@@ -46,7 +48,7 @@ export default class Block {
   }
 
   _getPropsAndChildren(propsAndChildren: Record<string, unknown>) {
-    const children: Record<string, Block> = {};
+    const children: Record<string, Block<Props>> = {};
     const props: Record<string, unknown> = {};
     Object.entries(propsAndChildren).forEach(([key, value]) => {
       if (value instanceof Block) {
@@ -56,7 +58,7 @@ export default class Block {
       }
     });
 
-    return { props, children };
+    return { props: props as Props, children };
   }
 
   init() {
@@ -165,7 +167,7 @@ export default class Block {
     });
   }
 
-  _makePropsProxy(props: Record<string, unknown>): Record<string, unknown> {
+  _makePropsProxy(props: Props): Props {
     // Можно и так передать this
     // Такой способ больше не применяется с приходом ES6+
     const self = this;
@@ -181,7 +183,7 @@ export default class Block {
 
         // TODO: Не уверен, нарущаю ли что-то этим.
         // eslint-disable-next-line no-param-reassign
-        target[prop] = value;
+        target[prop as keyof Props] = value;
 
         // Запускаем обновление компоненты
         // Плохой cloneDeep, в следующей итерации нужно заставлять добавлять cloneDeep им самим
