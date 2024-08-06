@@ -2,7 +2,11 @@ import template from "./login.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 
-export default class LoginPage extends Block {
+interface LoginPageProps {
+  [key: string]: unknown;
+}
+
+export default class LoginPage extends Block<LoginPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,

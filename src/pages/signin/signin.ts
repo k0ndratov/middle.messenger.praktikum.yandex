@@ -2,7 +2,11 @@ import template from "./signin.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 
-export default class SignInPage extends Block {
+interface SignInPageProps {
+  [key: string]: unknown;
+}
+
+export default class SignInPage extends Block<SignInPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,

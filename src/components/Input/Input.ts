@@ -8,12 +8,10 @@ interface InputProps {
   value?: string;
 
   onBlur?: () => void;
-  // onChange?: () => void;
-  // onInput?: () => void;
-  // onFocus?: () => void;
+  [key: string]: unknown;
 }
 
-export default class Input extends Block {
+export default class Input extends Block<InputProps> {
   constructor(props: InputProps) {
     super({
       ...props,
