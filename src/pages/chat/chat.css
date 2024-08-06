@@ -66,13 +66,8 @@
   max-width: 305px;
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -moz-box;
-  -moz-box-orient: vertical;
   display: -webkit-box;
   -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  line-clamp: 2;
-  box-orient: vertical;
 }
 
 .aside__dialog-info {
@@ -104,8 +99,7 @@
 .aside__dialogs {
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden auto;
   flex-grow: 1;
   align-items: start;
 }
@@ -206,4 +200,9 @@
   display: flex;
   align-items: center;
   margin-right: 8px;
+}
+
+.form__chat {
+  display: flex;
+  flex-direction: row !important;
 }
