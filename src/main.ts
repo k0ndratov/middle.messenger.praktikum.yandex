@@ -1,54 +1,31 @@
-import LoginPage from "./pages/login/login.ts";
-import SignInPage from "./pages/signin/signin.ts";
-import ChatPage from "./pages/chat/chat.ts";
-import ProfilePage from "./pages/profile/profile.ts";
-import PasswordPage from "./pages/password/password.ts";
-import NavigationPage from "./pages/navigation/navigation.ts";
-import Error404Page from "./pages/404/404.ts";
-import Error500Page from "./pages/500/500.ts";
+import "./assets/index.css";
 
 import Block from "./core/Block.ts";
+
+import router from "./core/Router.ts";
+import routes from "./core/constants/routes.ts";
 
 import Input from "./components/Input/Input.ts";
 import FormField from "./components/FormField/FormField.ts";
 import Form from "./components/Form/Form.ts";
+import Link from "./components/Link/Link.ts";
 
-import "./assets/index.css";
 import { registerComponent } from "./core/utils/registerComponent.ts";
 
 registerComponent("Input", Input as typeof Block);
 registerComponent("FormField", FormField as typeof Block);
 registerComponent("Form", Form as typeof Block);
+registerComponent("Link", Link as typeof Block);
 
-const ROUTES: Record<string, Block<Record<string, unknown>>> = {
-  navigation: new NavigationPage({}),
-  signin: new SignInPage({}),
-  login: new LoginPage({}),
-  profile: new ProfilePage({}),
-  chat: new ChatPage({}),
-  password: new PasswordPage({}),
-  404: new Error404Page({}),
-  500: new Error500Page({}),
-};
+// TODO: Куда теперь тебя подевать
+// page.dispatchComponentDidMount();
 
-const render = (page: Block<Record<string, unknown>>) => {
-  const root = document.getElementById("app");
-  if (root) {
-    root.innerHTML = "";
-    root.appendChild(page.element as HTMLElement);
-    page.dispatchComponentDidMount();
-  }
-};
+document.addEventListener("DOMContentLoaded", () => {
+  const paths = Object.keys(routes);
 
-declare global {
-  interface Window {
-    goToPage: (routeName: string) => void;
-  }
-}
+  paths.forEach((path) => {
+    router.use(`/${path}`, routes[path]);
+  });
 
-window.goToPage = (routeName) => {
-  const page = ROUTES[routeName];
-  render(page);
-};
-
-document.addEventListener("DOMContentLoaded", () => render(ROUTES.navigation));
+  router.start();
+});

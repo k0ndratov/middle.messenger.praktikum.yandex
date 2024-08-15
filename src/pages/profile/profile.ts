@@ -1,6 +1,7 @@
 import template from "./profile.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
+import router from "@/core/Router";
 
 interface ProfilePageProps {
   [key: string]: unknown;
@@ -26,6 +27,18 @@ export default class ProfilePage extends Block<ProfilePageProps> {
           display_name,
           phone,
         });
+      },
+
+      logOut: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/login");
+      },
+
+      goToChangePassword: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/password");
       },
     });
   }

@@ -1,6 +1,7 @@
 import template from "./signin.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
+import router from "@/core/Router";
 
 interface SignInPageProps {
   [key: string]: unknown;
@@ -30,6 +31,11 @@ export default class SignInPage extends Block<SignInPageProps> {
           password,
           password2,
         });
+      },
+      goToLogin: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/login");
       },
     });
   }

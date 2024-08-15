@@ -1,6 +1,7 @@
 import template from "./password.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
+import router from "@/core/Router";
 
 interface PasswordPageProps {
   [key: string]: unknown;
@@ -21,6 +22,12 @@ export default class PasswordPage extends Block<PasswordPageProps> {
           newPassword,
           newPasswordSubmit,
         });
+      },
+
+      goBack: (e: Event) => {
+        e.preventDefault();
+
+        router.back();
       },
     });
   }
