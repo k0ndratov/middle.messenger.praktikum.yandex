@@ -17,7 +17,11 @@
     }}}
     {{{FormField label="Телефон" type="phone" name="phone" ref="phone"}}}
     <button type="submit" class="button">Сохранить</button>
-    <button onclick="goToPage('password')" class="button-link">Изменить пароль</button>
-    <button onclick="goToPage('login')" class="button-link">Выйти</button>
+    {{{Link
+      text="Изменить пароль"
+      href="/password"
+      onClick=goToChangePassword
+    }}}
+    {{{Link text="Выйти" href="/login" onClick=logOut}}}
   {{/Form}}
 </main>
