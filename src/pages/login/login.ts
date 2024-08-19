@@ -2,12 +2,14 @@ import template from "./login.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 import router from "@/core/Router";
+import { withStore } from "@/hocs/withStore.ts";
+import store from "@/core/Store";
 
 interface LoginPageProps {
   [key: string]: unknown;
 }
 
-export default class LoginPage extends Block<LoginPageProps> {
+class LoginPage extends Block<LoginPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,
@@ -32,3 +34,5 @@ export default class LoginPage extends Block<LoginPageProps> {
     return this.compile(template, this.props);
   }
 }
+
+export default withStore(LoginPage as typeof Block);
