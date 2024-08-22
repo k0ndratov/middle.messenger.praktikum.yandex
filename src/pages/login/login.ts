@@ -3,7 +3,7 @@ import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 import router from "@/core/Router";
 import { withStore } from "@/hocs/withStore.ts";
-import store from "@/core/Store";
+import AuthController from "@/controllers/AuthController";
 
 interface LoginPageProps {
   [key: string]: unknown;
@@ -19,7 +19,7 @@ class LoginPage extends Block<LoginPageProps> {
         const login = (this.refs.login as FormField).value();
         const password = (this.refs.password as FormField).value();
 
-        console.table({ login, password });
+        AuthController.login({ login, password });
       },
 
       goToSignin: (e: Event) => {

@@ -1,21 +1,42 @@
 <main class="flex-wrapper">
-  {{#Form title="Иван" onSubmit=onSave}}
-    <img class="avatar" src="./avatar-stub.svg" alt="avatar" />
-    {{{FormField label="Логин" type="text" name="login" ref="login"}}}
-    {{{FormField label="Имя" type="text" name="first_name" ref="first_name"}}}
+  {{#Form title=user.first_name onSubmit=onUpdateProfile}}
+    <img src="{{user.avatar}}" alt="Аватарка" />
+    {{{FileInput ref="avatar" onSelectFile=onChangeAvatar}}}
+    {{{FormField
+      label="Логин"
+      type="text"
+      name="login"
+      ref="login"
+      value=user.login
+    }}}
+    {{{FormField
+      label="Имя"
+      type="text"
+      name="first_name"
+      ref="first_name"
+      value=user.first_name
+    }}}
     {{{FormField
       label="Фамилия"
       type="text"
       name="second_name"
       ref="second_name"
+      value=user.second_name
     }}}
     {{{FormField
       label="Имя в чате"
       type="text"
       name="display_name"
       ref="display_name"
+      value=user.display_name
     }}}
-    {{{FormField label="Телефон" type="phone" name="phone" ref="phone"}}}
+    {{{FormField
+      label="Телефон"
+      type="phone"
+      name="phone"
+      ref="phone"
+      value=user.phone
+    }}}
     <button type="submit" class="button">Сохранить</button>
     {{{Link
       text="Изменить пароль"

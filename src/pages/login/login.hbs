@@ -1,11 +1,18 @@
 <main class="flex-wrapper">
   {{#Form title="Вход" onSubmit=onLogin}}
-    {{{FormField label="Логин" type="text" name="login" ref="login"}}}
+    {{{FormField
+      label="Логин"
+      type="text"
+      name="login"
+      ref="login"
+      value="testlog1GGandrey"
+    }}}
     {{{FormField
       label="Пароль"
       type="password"
       name="password"
       ref="password"
+      value="Password213fsdf"
     }}}
     <button type="submit" class="button">Логин</button>
     {{{Link text="Нет аккаунта?" href="/signin" onClick=goToSignin}}}
