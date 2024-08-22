@@ -10,6 +10,7 @@ class Store extends EventBus {
   set(name: string, value: unknown) {
     this.state[name] = value;
     this.emit(StoreEvents.Updated);
+    console.warn(`set store prop: ${name} with value: ${JSON.stringify(value)}`);
   }
 
   getState() {

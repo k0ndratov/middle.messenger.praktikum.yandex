@@ -17,8 +17,6 @@ export default class ChatPage extends Block<ChatPageProps> {
         e.preventDefault();
 
         const message = (this.refs.message as FormField).value();
-
-        console.table({ message });
       },
 
       goToProfile: (e: Event) => {

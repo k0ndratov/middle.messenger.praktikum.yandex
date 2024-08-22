@@ -1,26 +1,53 @@
 <main class="flex-wrapper">
   {{#Form title="Регистрация" onSubmit=onSignin}}
-    {{{FormField label="Почта" type="email" name="email" ref="email"}}}
-    {{{FormField label="Логин" type="text" name="login" ref="login"}}}
-    {{{FormField label="Имя" type="text" name="first_name" ref="first_name"}}}
+    {{{FormField
+      label="Почта"
+      type="email"
+      name="email"
+      ref="email"
+      value="ondratovface@gmail.com"
+    }}}
+    {{{FormField
+      label="Логин"
+      type="text"
+      name="login"
+      ref="login"
+      value="testlog1GGandrey"
+    }}}
+    {{{FormField
+      label="Имя"
+      type="text"
+      name="first_name"
+      ref="first_name"
+      value="Andreyname"
+    }}}
     {{{FormField
       label="Фамилия"
       type="text"
       name="second_name"
       ref="second_name"
+      value="Kondratovichdota"
     }}}
-    {{{FormField label="Телефон" type="phone" name="phone" ref="phone"}}}
+    {{{FormField
+      label="Телефон"
+      type="phone"
+      name="phone"
+      ref="phone"
+      value="89221347531"
+    }}}
     {{{FormField
       label="Пароль"
       type="password"
       name="password"
       ref="password"
+      value="Password213fsdf"
     }}}
     {{{FormField
       label="Пароль (еще раз)"
       type="password"
       name="password_confirm"
       ref="password_confirm"
+      value="Password213fsdf"
     }}}
     <button class="button" type="submit">Зарегистрироваться</button>
     {{{Link text="Войти" href="/login" onClick=goToLogin}}}
