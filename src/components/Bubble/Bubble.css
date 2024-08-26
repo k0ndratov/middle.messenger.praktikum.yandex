@@ -1,0 +1,11 @@
+.bubble {
+  background-color: var(--dark-300);
+  position: absolute;
+  right: 25px;
+  top: 50px;
+  display: none;
+}
+
+.bubble_open {
+  display: block;
+}

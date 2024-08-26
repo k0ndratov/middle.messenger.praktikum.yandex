@@ -1,0 +1,13 @@
+{{#Dialog open=isOpen}}
+  {{#Form onSubmit=onSubmit}}
+    {{{FormField
+      label="ID нового пользователя"
+      type="text"
+      name="user-id"
+      ref="user-id"
+      value=""
+    }}}
+    {{{Button type="submit" text="Добавить пользователя"}}}
+    {{{Button text="Отмена" onClick=closeDialogAddUser}}}
+  {{/Form}}
+{{/Dialog}}

@@ -1,0 +1,95 @@
+.main__dialog-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.form__chat {
+  display: flex;
+  flex-direction: row !important;
+}
+
+.main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 20px);
+}
+
+.main__header {
+  display: flex;
+  flex-direction: column;
+}
+
+.main__hr {
+  width: 100%;
+  border: 1px solid var(--dark-300);
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.input.chat {
+  box-sizing: border-box;
+  width: 100%;
+  margin: 12px 0;
+}
+
+.main__dialog-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main__dialog-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.main__dialog {
+  justify-content: end;
+  flex-direction: column;
+  padding: 30px;
+  overflow: auto;
+}
+
+.main__dialog-row {
+  display: flex;
+  flex-grow: 0;
+  margin-bottom: 24px;
+}
+
+.main__dialog-row.center {
+  justify-content: center;
+}
+
+.main__dialog-row.end {
+  justify-content: end;
+}
+
+.message {
+  padding: 18px;
+  border-radius: 8px;
+  background-color: var(--dark-300);
+  max-width: 500px;
+}
+
+.button__link {
+  margin: 12px;
+}
+
+.button__send {
+  margin: 12px;
+}
+
+.main__settings {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.empty-window {
+  display: flex;
+  margin: auto;
+}

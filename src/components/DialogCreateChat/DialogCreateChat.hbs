@@ -1,0 +1,13 @@
+{{#Dialog open=isOpen}}
+  {{#Form onSubmit=onSubmit}}
+    {{{FormField
+      label="FieldLabel"
+      type="text"
+      name="title"
+      ref="title"
+      value="Название нового чата"
+    }}}
+    {{{Button type="submit" text="Создать чат"}}}
+    {{{Button text="Отмена" onClick=closeDialogCreateChat}}}
+  {{/Form}}
+{{/Dialog}}
