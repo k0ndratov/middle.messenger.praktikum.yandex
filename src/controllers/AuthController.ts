@@ -1,5 +1,4 @@
 import { AuthAPI, LoginData, RegisterData } from "@/api/AuthAPI";
-import { BASE_URL } from "@/core/constants/baseURL";
 import store from "@/core/Store";
 import router from "@/core/Router";
 import { generateUrl } from "@/core/utils/generateUrl";

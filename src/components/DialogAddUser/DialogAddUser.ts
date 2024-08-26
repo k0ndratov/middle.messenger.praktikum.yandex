@@ -20,8 +20,8 @@ class DialogAddUser extends Block<DialogAddUserProps> {
 
         const userId = (this.refs["user-id"] as FormField).value();
         const { currentChat } = store.getState();
-
-        ChatController.addUserToChat(Number(userId), currentChat.id);
+        const currentChatId = (currentChat as Record<string, unknown>).id;
+        ChatController.addUserToChat(Number(userId), currentChatId as number);
         store.set("isDialogAddUserOpen", false);
         //
       },

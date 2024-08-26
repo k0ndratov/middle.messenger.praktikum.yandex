@@ -1,7 +1,7 @@
 import template from "./chat.hbs?raw";
 import "./chat.css";
 import Block from "../../core/Block";
-import FormField from "../../components/FormField/FormField";
+// import FormField from "../../components/FormField/FormField";
 import router from "@/core/Router";
 import ChatController from "@/controllers/ChatController";
 import { withStore } from "@/hocs/withStore";
@@ -23,7 +23,9 @@ class ChatPage extends Block<ChatPageProps> {
       onSend: (e: Event) => {
         e.preventDefault();
 
-        const message = (this.refs.message as FormField).value();
+        // const message = (this.refs.message as FormField).value();
+
+        // console.log(message);
       },
 
       goToProfile: (e: Event) => {

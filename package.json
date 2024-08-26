@@ -12,7 +12,7 @@
     "eslint": "eslint ./src/**/*.{js,ts,jsx,tsx}",
     "eslint:fix": "eslint ./src/**/*.{js,ts,jsx,tsx} --fix",
     "stylelint": "stylelint ./src/**/*.css",
-    "stylelint:fix": "stylelint ./src/**/*.{css} --fix",
+    "stylelint:fix": "stylelint ./src/**/*.css --fix",
     "lint": "npm run tslint && npm run eslint && npm run stylelint"
   },
   "browserslist": [
