@@ -7,14 +7,17 @@ import Error404Page from "@/pages/404/404.ts";
 import Error500Page from "@/pages/500/500.ts";
 import Block from "../Block";
 
-const ROUTES: { [key: string]: typeof Block<Record<string, unknown>> } = {
+const PUBLIC_ROUTES: { [key: string]: typeof Block<Record<string, unknown>> } = {
   login: LoginPage,
   signin: SignInPage,
-  profile: ProfilePage,
-  chat: ChatPage,
-  password: PasswordPage,
   404: Error404Page,
   500: Error500Page,
 } as const;
 
-export default ROUTES;
+const LOGIN_REQUIRED_ROUTES: { [key: string]: typeof Block<Record<string, unknown>> } = {
+  profile: ProfilePage,
+  chat: ChatPage,
+  password: PasswordPage,
+} as const;
+
+export default { PUBLIC_ROUTES, LOGIN_REQUIRED_ROUTES };

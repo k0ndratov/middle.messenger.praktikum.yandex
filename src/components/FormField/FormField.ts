@@ -40,7 +40,6 @@ export default class FormField extends Block<FormFieldProps> {
 
   public validate(): Boolean {
     const isValid = this._validate();
-    console.log(this._value());
     if (isValid) {
       this.setProps({ ...this.props, error: null, value: this._value() });
       return true;

@@ -8,6 +8,7 @@
 @import url("./labels/label.css");
 @import url("./forms/form.css");
 @import url("./layouts/flex.css");
+@import url("./dialog/dialog.css");
 
 :root {
   --dark-100: #0a0a0a;

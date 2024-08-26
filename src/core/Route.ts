@@ -14,22 +14,18 @@ export default class Route {
 
   public path: string | null = null;
 
-  constructor(path: string, blockClass: BlockConstructable, rootQuery: string) {
+  public isLoginRequired;
+
+  constructor(path: string, blockClass: BlockConstructable, rootQuery: string, isLoginRequired: boolean) {
     this._blockClass = blockClass;
     this._rootQuery = rootQuery;
+    this.isLoginRequired = isLoginRequired;
     this.path = path;
   }
 
   match(path: string) {
     return this.path === path;
   }
-
-  // navigate(path: string) {
-  //   if (this.match(path)) {
-  //     this.path = path;
-  //     this.render();
-  //   }
-  // }
 
   render() {
     this._block = new this._blockClass({});

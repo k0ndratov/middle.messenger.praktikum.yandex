@@ -1,4 +1,5 @@
 import Route, { BlockConstructable } from "./Route";
+import store from "./Store";
 
 class Router {
   private __instance: Router | null = null;
@@ -33,17 +34,22 @@ class Router {
       return;
     }
 
-    // if (this._currentRoute) {
-    //   this._currentRoute.leave();
-    // }
+    if (route.isLoginRequired) {
+      const isUserLogin = store.getState().user;
+
+      if (!isUserLogin) {
+        this.go("/login");
+        return;
+      }
+    }
 
     this._currentRoute = route;
 
     this._currentRoute.render();
   }
 
-  use(path: string, block: BlockConstructable) {
-    const newRoute = new Route(path, block, this.ROOT_QUERY);
+  use(path: string, block: BlockConstructable, isLoginRequired: boolean) {
+    const newRoute = new Route(path, block, this.ROOT_QUERY, isLoginRequired);
     this.routes.push(newRoute);
 
     return this;
