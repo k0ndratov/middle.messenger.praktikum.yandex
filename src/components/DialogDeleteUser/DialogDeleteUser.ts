@@ -21,7 +21,8 @@ class DialogDeleteUser extends Block<DialogDeleteUserProps> {
         const userId = (this.refs["user-id"] as FormField).value();
         const { currentChat } = store.getState();
 
-        ChatController.deleteUserFromChat(Number(userId), currentChat.id);
+        const currentChatId = (currentChat as Record<string, unknown>).id;
+        ChatController.deleteUserFromChat(Number(userId), currentChatId as number);
         store.set("isDialogDeleteUserOpen", false);
       },
 
