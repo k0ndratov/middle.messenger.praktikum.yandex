@@ -38,6 +38,8 @@ class Router {
     let isUserLogin = store.getState().user;
 
     if (route.isLoginRequired && !isUserLogin) {
+      // Для проверки на то, что пользователь залогинен,
+      // но в сторе о нем нет информации.
       await AuthController.user();
       isUserLogin = store.getState().user;
 
