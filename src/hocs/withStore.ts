@@ -5,14 +5,14 @@ export function withStore(Component: typeof Block, mapStateToProps: (state: Reco
   // используем class expression
   return class extends Component<Record<string, unknown>> {
     constructor(props: Record<string, unknown>) {
-      let partialState = mapStateToProps(store.getState());
-
-      super({ ...props, ...partialState });
-
       store.on(StoreEvents.Updated, () => {
         partialState = mapStateToProps(store.getState());
         this.setProps({ ...props, ...partialState });
       });
+
+      let partialState = mapStateToProps(store.getState());
+
+      super({ ...props, ...partialState });
     }
   };
 }
