@@ -3,10 +3,10 @@
     <img src={{chat.avatar}} alt="Аватарка чата" />
     <div class="aside__dialog-content">
       <b class="aside__dialog-name">{{chat.title}}</b>
-      <p class="aside__dialog-preview">{{chat.last_message}}</p>
+      <p class="aside__dialog-preview">{{chat.last_message.content}}</p>
     </div>
     <div class="aside__dialog-info">
-      <time datetime="">12:00</time>
+      <time datetime="">{{chat.last_message.time}}</time>
       <div class="aside__badge">{{chat.unread_count}}</div>
     </div>
   </div>

@@ -1,0 +1,24 @@
+.main__dialog-form {
+  display: flex;
+  flex-direction: row;
+}
+
+.main__dialog-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main__dialog-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+}
+
+.main__dialog {
+  justify-content: end;
+  flex-direction: column;
+  padding: 30px;
+  overflow: auto;
+}

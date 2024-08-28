@@ -34,4 +34,4 @@ class PasswordPage extends Block<PasswordPageProps> {
   }
 }
 
-export default withStore(PasswordPage as typeof Block);
+export default withStore(PasswordPage as typeof Block, (state) => ({ user: state.user }));

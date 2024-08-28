@@ -8,15 +8,15 @@ import Error500Page from "@/pages/500/500.ts";
 import Block from "../Block";
 
 const PUBLIC_ROUTES: { [key: string]: typeof Block<Record<string, unknown>> } = {
-  login: LoginPage,
-  signin: SignInPage,
+  "": LoginPage,
+  "sign-up": SignInPage,
   404: Error404Page,
   500: Error500Page,
 } as const;
 
 const LOGIN_REQUIRED_ROUTES: { [key: string]: typeof Block<Record<string, unknown>> } = {
-  profile: ProfilePage,
-  chat: ChatPage,
+  settings: ProfilePage,
+  messenger: ChatPage,
   password: PasswordPage,
 } as const;
 

@@ -1,24 +1,30 @@
 import ChatAPI from "@/api/ChatAPI";
 import store from "@/core/Store";
 import { generateUrl } from "@/core/utils/generateUrl";
+import MessageController from "./MessagesController";
 
 class ChatController {
   private _api = new ChatAPI();
 
   public async getChats() {
-    let chats = (await this._api.chats()) as Record<string, unknown>[];
+    const chats = (await this._api.chats()) as Array<{ avatar: string; last_message: string; id: number }>;
 
-    chats = chats.map((chat) => {
-      const { avatar, last_message } = chat;
+    const preparedChats = await Promise.all(
+      chats.map(async (chat) => {
+        const { avatar, last_message } = chat;
 
-      return {
-        ...chat,
-        avatar: avatar ? generateUrl(avatar as string) : "/avatar-stub.svg",
-        last_message: last_message || "Создан новый чат",
-      };
-    });
+        const token = await this.getChatToken(chat.id as number);
+        await MessageController.connect(chat.id, token);
 
-    store.set("chats", chats);
+        return {
+          ...chat,
+          avatar: avatar ? generateUrl(avatar) : "/avatar-stub.svg",
+          last_message: last_message || "Создан новый чат",
+        };
+      }),
+    );
+
+    store.set("chats", preparedChats);
   }
 
   public async createChat(title: string) {
@@ -53,6 +59,10 @@ class ChatController {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  public getChatToken(chatId: number) {
+    return this._api.getToken(chatId);
   }
 }
 

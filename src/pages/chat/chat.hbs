@@ -2,7 +2,6 @@
     <div class="aside__header">
       <div class="aside__header-info">
         {{{Button text="Новый чат" onClick=showCreateChatDialog}}}
-        {{{DialogCreateChat}}}
         <span class="aside__header-info-button">
           {{{Link href="/profile" text="Профиль" onClick=goToProfile}}}
           <img src="./arrow.svg" alt="arrow" />
@@ -13,6 +12,8 @@
     {{{ChatList chats=chats}}}
   </aside>
   {{{ChatWindow}}}
+
+  {{{DialogCreateChat}}}
   {{{DialogAddUser}}}
   {{{DialogDeleteUser}}}
 </div>

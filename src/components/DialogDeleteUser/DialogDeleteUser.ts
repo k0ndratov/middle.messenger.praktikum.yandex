@@ -37,4 +37,4 @@ class DialogDeleteUser extends Block<DialogDeleteUserProps> {
   }
 }
 
-export default withStore(DialogDeleteUser as typeof Block);
+export default withStore(DialogDeleteUser as typeof Block, (state) => ({ isDialogDeleteUserOpen: state.isDialogDeleteUserOpen }));

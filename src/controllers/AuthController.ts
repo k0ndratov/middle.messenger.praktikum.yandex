@@ -11,10 +11,16 @@ class AuthController {
       await this._api.login(data);
       const user = await this._api.user();
 
-      store.set("user", user);
-      router.go("/chat");
+      await store.set("user", user);
+      router.go("/messenger");
     } catch (e) {
-      console.error(e);
+      const errorMessage = (e as Record<string, unknown>).message as string;
+      if (errorMessage.indexOf("User already in system") !== -1) {
+        await this.user();
+        router.go("/messenger");
+      } else {
+        console.error(e);
+      }
     }
   }
 
@@ -25,7 +31,8 @@ class AuthController {
   public async logout() {
     try {
       await this._api.logout();
-      router.go("/login");
+      store.set("user", null);
+      router.go("/");
     } catch (e) {
       console.error(e);
     }

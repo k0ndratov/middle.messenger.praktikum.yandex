@@ -36,4 +36,4 @@ class DialogCreateChat extends Block<DialogCreateChatProps> {
   }
 }
 
-export default withStore(DialogCreateChat as typeof Block);
+export default withStore(DialogCreateChat as typeof Block, (state) => ({ isDialogCreateChatOpen: state.isDialogCreateChatOpen }));

@@ -59,4 +59,4 @@ class ProfilePage extends Block<ProfilePageProps> {
   }
 }
 
-export default withStore(ProfilePage as typeof Block);
+export default withStore(ProfilePage as typeof Block, (state) => ({ user: state.user }));

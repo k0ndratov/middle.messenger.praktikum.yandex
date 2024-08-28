@@ -28,6 +28,11 @@ export default class FormField extends Block<FormFieldProps> {
     return this._value();
   }
 
+  public resetValue() {
+    const htmlInputElement = this.refs.input.element as HTMLInputElement;
+    htmlInputElement.value = "";
+  }
+
   private _validate() {
     const inputElement = this.refs.input.element as HTMLInputElement;
 

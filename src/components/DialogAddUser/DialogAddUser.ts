@@ -37,4 +37,4 @@ class DialogAddUser extends Block<DialogAddUserProps> {
   }
 }
 
-export default withStore(DialogAddUser as typeof Block);
+export default withStore(DialogAddUser as typeof Block, (state) => ({ isDialogAddUserOpen: state.isDialogAddUserOpen }));

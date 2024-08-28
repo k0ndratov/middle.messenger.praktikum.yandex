@@ -35,7 +35,7 @@ export default class SignInPage extends Block<SignInPageProps> {
       goToLogin: (e: Event) => {
         e.preventDefault();
 
-        router.go("/login");
+        router.go("/");
       },
     });
   }
