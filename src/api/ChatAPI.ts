@@ -1,5 +1,9 @@
 import { BaseAPI } from "./BaseAPI";
 
+interface TokenHttpResponse extends XMLHttpRequest {
+  token: string;
+}
+
 export default class ChatAPI extends BaseAPI {
   constructor() {
     super("/chats");
@@ -27,5 +31,10 @@ export default class ChatAPI extends BaseAPI {
 
   public deleteUser(userId: number, chatId: number) {
     return this.http.delete("/users", { data: { users: [userId], chatId } });
+  }
+
+  public async getToken(chatId: number) {
+    const response = await this.http.post(`/token/${chatId}`);
+    return (response as TokenHttpResponse).token;
   }
 }

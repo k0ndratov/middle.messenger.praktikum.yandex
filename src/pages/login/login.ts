@@ -2,14 +2,13 @@ import template from "./login.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
 import router from "@/core/Router";
-import { withStore } from "@/hocs/withStore.ts";
 import AuthController from "@/controllers/AuthController";
 
 interface LoginPageProps {
   [key: string]: unknown;
 }
 
-class LoginPage extends Block<LoginPageProps> {
+export default class LoginPage extends Block<LoginPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,
@@ -25,7 +24,7 @@ class LoginPage extends Block<LoginPageProps> {
       goToSignin: (e: Event) => {
         e.preventDefault();
 
-        router.go("/signin");
+        router.go("/sign-up");
       },
     });
   }
@@ -34,5 +33,3 @@ class LoginPage extends Block<LoginPageProps> {
     return this.compile(template, this.props);
   }
 }
-
-export default withStore(LoginPage as typeof Block);

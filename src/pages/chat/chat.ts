@@ -1,11 +1,10 @@
-import template from "./chat.hbs?raw";
-import "./chat.css";
 import Block from "../../core/Block";
-// import FormField from "../../components/FormField/FormField";
-import router from "@/core/Router";
 import ChatController from "@/controllers/ChatController";
-import { withStore } from "@/hocs/withStore";
+import template from "./chat.hbs?raw";
+import router from "@/core/Router";
 import store from "@/core/Store";
+import { withStore } from "@/hocs/withStore";
+import "./chat.css";
 
 interface ChatPageProps {
   [key: string]: unknown;
@@ -20,18 +19,10 @@ class ChatPage extends Block<ChatPageProps> {
 
       chats: store.getState(),
 
-      onSend: (e: Event) => {
-        e.preventDefault();
-
-        // const message = (this.refs.message as FormField).value();
-
-        // console.log(message);
-      },
-
       goToProfile: (e: Event) => {
         e.preventDefault();
 
-        router.go("/profile");
+        router.go("/settings");
       },
 
       showCreateChatDialog: () => {
@@ -47,4 +38,4 @@ class ChatPage extends Block<ChatPageProps> {
   }
 }
 
-export default withStore(ChatPage as typeof Block);
+export default withStore(ChatPage as typeof Block, (state) => ({ ...state }));

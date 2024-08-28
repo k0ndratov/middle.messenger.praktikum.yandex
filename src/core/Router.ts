@@ -1,3 +1,4 @@
+import AuthController from "@/controllers/AuthController";
 import Route, { BlockConstructable } from "./Route";
 import store from "./Store";
 
@@ -27,18 +28,31 @@ class Router {
     return this.routes.find((route) => route.path === path);
   }
 
-  _onRoute(path: string) {
+  async _onRoute(path: string) {
     const route = this._getRoute(path);
 
     if (!route) {
       return;
     }
 
-    if (route.isLoginRequired) {
-      const isUserLogin = store.getState().user;
+    let isUserLogin = store.getState().user;
+
+    if (route.isLoginRequired && !isUserLogin) {
+      await AuthController.user();
+      isUserLogin = store.getState().user;
 
       if (!isUserLogin) {
-        this.go("/login");
+        this.go("/");
+        return;
+      }
+    }
+
+    if (!route.isLoginRequired && !isUserLogin) {
+      await AuthController.user();
+      isUserLogin = store.getState().user;
+
+      if (isUserLogin) {
+        this.go("/messenger");
         return;
       }
     }

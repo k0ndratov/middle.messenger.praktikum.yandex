@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "typeRoots": ["node_modules/@types", "./src/types"],
     "paths": {
       "@/*": ["./src/*"]
     },
@@ -26,5 +27,5 @@
     "sourceMap": true,
     "strictNullChecks": true
   },
-  "include": ["src"]
+  "include": ["src", "src/types"]
 }
