@@ -1,0 +1,9 @@
+.small-image {
+  max-width: 40px;
+  max-height: 40px;
+}
+
+.large-image {
+  max-width: 80px;
+  max-height: 80px;
+}
