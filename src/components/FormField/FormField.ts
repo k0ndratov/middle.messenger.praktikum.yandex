@@ -24,7 +24,7 @@ export default class FormField extends Block<FormFieldProps> {
   }
 
   public value() {
-    this.validate();
+    // this.validate();
     return this._value();
   }
 

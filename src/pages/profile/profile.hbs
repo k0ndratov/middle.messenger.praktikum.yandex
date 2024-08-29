@@ -1,6 +1,6 @@
 <main class="flex-wrapper">
   {{#Form title=user.first_name onSubmit=onUpdateProfile}}
-    <img src="{{user.avatar}}" alt="Аватарка" />
+    <img src="{{user.avatar}}" alt="Аватарка" class="large-image" />
     {{{FileInput ref="avatar" onSelectFile=onChangeAvatar}}}
     {{{FormField
       label="Логин"
