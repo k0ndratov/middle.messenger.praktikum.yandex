@@ -45,6 +45,12 @@ class ProfilePage extends Block<ProfilePageProps> {
         router.go("/password");
       },
 
+      goToMessenger: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/messenger");
+      },
+
       onChangeAvatar: () => {
         const file = (this.refs.avatar as FileInput).getFile();
         if (file) UserController.updateAvatar(file);
