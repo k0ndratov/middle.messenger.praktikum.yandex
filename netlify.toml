@@ -8,7 +8,7 @@
 [build]
   publish = "dist"
 
-[redirects]
+[[redirects]]
   from = "/*"
   to = "/index.html"
   code = 200
