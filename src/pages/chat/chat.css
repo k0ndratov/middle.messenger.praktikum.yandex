@@ -14,8 +14,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1px solid black;
-  width: 25%;
+  min-width: 400px;
   height: 100vh;
   background-color: var(--dark-300);
 }
@@ -103,10 +102,15 @@
   overflow: hidden auto;
   flex-grow: 1;
   align-items: start;
+
+  li {
+    width: 100%;
+  }
 }
 
 .aside__dialog {
   display: flex;
+  width: 100%;
   flex-direction: row;
   gap: 8px;
   padding: 8px;

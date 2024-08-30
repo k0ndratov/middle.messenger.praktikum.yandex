@@ -11,14 +11,17 @@
           {{{ChatSettingsBubble}}}
         </div>
       </div>
-      <hr class="main__hr" />
     </div>
     {{{ChatMessages}}}
-    <hr class="main__hr" />
     <div class="main__dialog-form">
       {{#Form onSubmit=onSend style="chat"}}
         <button class="button button__link">@</button>
-        {{{FormField type="text" name="message" ref="message"}}}
+        {{{FormField
+          type="text"
+          name="message"
+          ref="message"
+          placeholder="Введите сообщение"
+        }}}
         <button class="button button__send" type="submit">></button>
       {{/Form}}
     </div>
