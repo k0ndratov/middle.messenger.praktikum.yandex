@@ -11,5 +11,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  code = 200
-  force = true
+  status = 200
