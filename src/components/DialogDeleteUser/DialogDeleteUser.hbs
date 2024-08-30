@@ -1,0 +1,13 @@
+{{#Dialog open=isOpen}}
+  {{#Form onSubmit=onSubmit}}
+    {{{FormField
+      label="ID удаляемого пользователя"
+      type="text"
+      name="user-id"
+      ref="user-id"
+      value=""
+    }}}
+    {{{Button type="submit" text="Удалить пользователя"}}}
+    {{{Button text="Отмена" onClick=closeDialogAddUser}}}
+  {{/Form}}
+{{/Dialog}}

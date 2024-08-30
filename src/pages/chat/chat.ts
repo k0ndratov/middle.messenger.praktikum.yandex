@@ -1,28 +1,41 @@
-import template from "./chat.hbs?raw";
-import "./chat.css";
 import Block from "../../core/Block";
-import FormField from "../../components/FormField/FormField";
+import ChatController from "@/controllers/ChatController";
+import template from "./chat.hbs?raw";
+import router from "@/core/Router";
+import store from "@/core/Store";
+import { withStore } from "@/hocs/withStore";
+import "./chat.css";
 
 interface ChatPageProps {
   [key: string]: unknown;
 }
 
-export default class ChatPage extends Block<ChatPageProps> {
+class ChatPage extends Block<ChatPageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,
+
       style: "chat",
-      onSend: (e: Event) => {
+
+      chats: store.getState(),
+
+      goToProfile: (e: Event) => {
         e.preventDefault();
 
-        const message = (this.refs.message as FormField).value();
+        router.go("/settings");
+      },
 
-        console.table({ message });
+      showCreateChatDialog: () => {
+        store.set("isDialogCreateChatOpen", true);
       },
     });
+
+    ChatController.getChats();
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+export default withStore(ChatPage as typeof Block, (state) => ({ ...state }));

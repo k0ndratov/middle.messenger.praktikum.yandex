@@ -1,0 +1,7 @@
+<ul class="aside__dialogs">
+  {{#if chats.length}}
+    {{#each chats}}
+      {{{ChatListItem chat=this}}}
+    {{/each}}
+  {{/if}}
+</ul>

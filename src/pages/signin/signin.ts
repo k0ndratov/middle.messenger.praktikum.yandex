@@ -1,6 +1,8 @@
 import template from "./signin.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
+import router from "@/core/Router";
+import AuthController from "@/controllers/AuthController";
 
 interface SignInPageProps {
   [key: string]: unknown;
@@ -19,17 +21,21 @@ export default class SignInPage extends Block<SignInPageProps> {
         const email = (this.refs.email as FormField).value();
         const phone = (this.refs.phone as FormField).value();
         const password = (this.refs.password as FormField).value();
-        const password2 = (this.refs.password_confirm as FormField).value();
+        // const password2 = (this.refs.password_confirm as FormField).value();
 
-        console.table({
+        AuthController.register({
           login,
           first_name,
           second_name,
           email,
           phone,
           password,
-          password2,
         });
+      },
+      goToLogin: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/");
       },
     });
   }

@@ -1,3 +1,5 @@
+import { BASE_URL } from "./constants/baseURL.ts";
+
 const METHODS = {
   GET: "GET",
   POST: "POST",
@@ -12,18 +14,24 @@ function queryStringify(data: Record<string, unknown>) {
 
 type HTTPTransportOptions = {
   headers?: Record<string, string>;
-  data?: Record<string, unknown>;
+  data?: Record<string, unknown> | FormData;
   method?: string;
 };
 
 export default class HTTPTransport {
-  get = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.GET }, timeout);
+  private _endpoint: string;
 
-  post = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.POST }, timeout);
+  constructor(endpont: string) {
+    this._endpoint = `${BASE_URL}${endpont}`;
+  }
 
-  put = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.PUT }, timeout);
+  get = (path: string, options: HTTPTransportOptions = {}, timeout?: number) => this.request(this._endpoint + path, { ...options, method: METHODS.GET }, timeout);
 
-  delete = (url: string, options: HTTPTransportOptions = {}, timeout: number) => this.request(url, { ...options, method: METHODS.DELETE }, timeout);
+  post = (path: string, options: HTTPTransportOptions = {}, timeout?: number) => this.request(this._endpoint + path, { ...options, method: METHODS.POST }, timeout);
+
+  put = (path: string, options: HTTPTransportOptions = {}, timeout?: number) => this.request(this._endpoint + path, { ...options, method: METHODS.PUT }, timeout);
+
+  delete = (path: string, options: HTTPTransportOptions = {}, timeout?: number) => this.request(this._endpoint + path, { ...options, method: METHODS.DELETE }, timeout);
 
   request = (url: string, options: HTTPTransportOptions = {}, timeout: number = 5000) => {
     const { headers = {}, method, data } = options;
@@ -35,16 +43,30 @@ export default class HTTPTransport {
       }
 
       const xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+      xhr.responseType = "json";
+
       const isGet = method === METHODS.GET;
 
-      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data)}` : url);
+      xhr.open(method, isGet && !!data ? `${url}${queryStringify(data as Record<string, unknown>)}` : url);
 
       Object.keys(headers).forEach((key) => {
         xhr.setRequestHeader(key, headers[key]);
       });
 
       xhr.onload = function () {
-        resolve(xhr);
+        const isStatusCodeSuccess = xhr.status >= 200 && xhr.status < 300;
+
+        if (isStatusCodeSuccess) {
+          resolve(xhr.response);
+        } else {
+          const hasReason = xhr.response.reason;
+          const errorExplanation = hasReason || "Unexpected error";
+
+          const errorMessage = `Request failed with status code: ${xhr.status}, ${errorExplanation}.`;
+
+          reject(new Error(errorMessage));
+        }
       };
 
       xhr.onabort = reject;
@@ -55,7 +77,10 @@ export default class HTTPTransport {
 
       if (isGet || !data) {
         xhr.send();
+      } else if (data instanceof FormData) {
+        xhr.send(data);
       } else {
+        xhr.setRequestHeader("Content-type", "application/json");
         xhr.send(JSON.stringify(data));
       }
     });

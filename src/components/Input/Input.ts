@@ -8,6 +8,7 @@ interface InputProps {
   value?: string;
 
   onBlur?: () => void;
+  onChange?: () => void;
   [key: string]: unknown;
 }
 
@@ -17,6 +18,7 @@ export default class Input extends Block<InputProps> {
       ...props,
       events: {
         blur: props.onBlur,
+        change: props.onChange,
       },
     });
   }

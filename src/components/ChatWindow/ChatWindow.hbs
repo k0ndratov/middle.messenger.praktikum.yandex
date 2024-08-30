@@ -1,0 +1,33 @@
+{{#if chat}}
+  <main class="main">
+    <div class="main__header">
+      <div class="main__dialog-info">
+        <div class="main__dialog-name">
+          <img src="./avatar-stub.svg" alt="avatar" class="small-image" />
+          <span>{{chat.title}}</span>
+        </div>
+        <div class="main__settings">
+          {{{Button onClick=openChatSettingsBubble text="..."}}}
+          {{{ChatSettingsBubble}}}
+        </div>
+      </div>
+    </div>
+    {{{ChatMessages}}}
+    <div class="main__dialog-form">
+      {{#Form onSubmit=onSend style="chat"}}
+        <button class="button button__link">@</button>
+        {{{FormField
+          type="text"
+          name="message"
+          ref="message"
+          placeholder="Введите сообщение"
+        }}}
+        <button class="button button__send" type="submit">></button>
+      {{/Form}}
+    </div>
+  </main>
+{{else}}
+  <main class="empty-window">
+    <span>Выберите чат чтобы отправить сообщение</span>
+  </main>
+{{/if}}

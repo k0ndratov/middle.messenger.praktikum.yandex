@@ -1,16 +1,21 @@
 import template from "./profile.hbs?raw";
 import Block from "../../core/Block";
 import FormField from "../../components/FormField/FormField";
+import router from "@/core/Router";
+import AuthController from "@/controllers/AuthController";
+import UserController from "@/controllers/UserController";
+import { withStore } from "@/hocs/withStore";
+import FileInput from "@/components/FileInput/FileInput";
 
 interface ProfilePageProps {
   [key: string]: unknown;
 }
 
-export default class ProfilePage extends Block<ProfilePageProps> {
+class ProfilePage extends Block<ProfilePageProps> {
   constructor(props: Record<string, unknown>) {
     super({
       ...props,
-      onSave: (e: Event) => {
+      onUpdateProfile: (e: Event) => {
         e.preventDefault();
 
         const login = (this.refs.login as FormField).value();
@@ -19,7 +24,7 @@ export default class ProfilePage extends Block<ProfilePageProps> {
         const display_name = (this.refs.display_name as FormField).value();
         const phone = (this.refs.phone as FormField).value();
 
-        console.table({
+        UserController.updateProfile({
           login,
           first_name,
           second_name,
@@ -27,10 +32,37 @@ export default class ProfilePage extends Block<ProfilePageProps> {
           phone,
         });
       },
+
+      logOut: (e: Event) => {
+        e.preventDefault();
+
+        AuthController.logout();
+      },
+
+      goToChangePassword: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/password");
+      },
+
+      goToMessenger: (e: Event) => {
+        e.preventDefault();
+
+        router.go("/messenger");
+      },
+
+      onChangeAvatar: () => {
+        const file = (this.refs.avatar as FileInput).getFile();
+        if (file) UserController.updateAvatar(file);
+      },
     });
+
+    AuthController.user();
   }
 
   render() {
     return this.compile(template, this.props);
   }
 }
+
+export default withStore(ProfilePage as typeof Block, (state) => ({ user: state.user }));

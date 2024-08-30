@@ -1,0 +1,6 @@
+dialog {
+  position: absolute;
+  inset: 0;
+  background-color: var(--dark-300);
+  border: none;
+}

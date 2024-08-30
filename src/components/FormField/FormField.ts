@@ -24,19 +24,27 @@ export default class FormField extends Block<FormFieldProps> {
   }
 
   public value() {
-    this.validate();
+    // this.validate();
     return this._value();
+  }
+
+  public resetValue() {
+    const htmlInputElement = this.refs.input.element as HTMLInputElement;
+    htmlInputElement.value = "";
   }
 
   private _validate() {
     const inputElement = this.refs.input.element as HTMLInputElement;
+
+    const validateRule = VALIDATION_RULES[inputElement.name];
+
+    if (!validateRule) return true;
 
     return VALIDATION_RULES[inputElement.name].test(inputElement.value);
   }
 
   public validate(): Boolean {
     const isValid = this._validate();
-
     if (isValid) {
       this.setProps({ ...this.props, error: null, value: this._value() });
       return true;

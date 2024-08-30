@@ -1,0 +1,14 @@
+<li role="button">
+  <div class="aside__dialog">
+    <img src={{chat.avatar}} alt="Аватарка чата" class="small-image" />
+    <div class="aside__dialog-content">
+      <b class="aside__dialog-name">{{chat.title}}</b>
+      <p class="aside__dialog-preview">{{chat.last_message.content}}</p>
+    </div>
+    <div class="aside__dialog-info">
+      <time datetime="">{{chat.last_message.time}}</time>
+      <div class="aside__badge">{{chat.unread_count}}</div>
+    </div>
+  </div>
+  <hr class="aside__hr" />
+</li>
