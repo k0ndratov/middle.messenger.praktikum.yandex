@@ -1,4 +1,4 @@
-import { AuthAPI, LoginData, RegisterData } from "@/api/AuthAPI";
+import { AuthAPI, LoginData, RegisterData } from "../api/AuthAPI";
 import store from "@/core/Store";
 import router from "@/core/Router";
 import { generateUrl } from "@/core/utils/generateUrl";

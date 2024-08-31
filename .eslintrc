@@ -25,6 +25,12 @@
     "quotes": ["error", "double"],
     "camelcase": "off",
   },
+  "globals": {
+    "it": "readonly",
+    "describe": "readonly",
+    "expect": "readonly",
+    "jest": "readonly",
+  },
   "settings": {
     "import/resolver": {
       "node": {
