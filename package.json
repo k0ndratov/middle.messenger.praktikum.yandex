@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "browserslist": [
+    "cover 99.5%"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -16,8 +19,8 @@
     "test": "jest",
     "lint": "npm run tslint && npm run eslint && npm run stylelint && npm run test && npm run build"
   },
-  "browserslist": [
-    "cover 99.5%"
+  "pre-commit": [
+    "lint"
   ],
   "devDependencies": {
     "@types/chai": "^4.3.19",
@@ -34,6 +37,7 @@
     "mocha": "^10.7.3",
     "postcss": "^8.4.39",
     "postcss-extend": "^1.0.5",
+    "pre-commit": "^1.2.2",
     "stylelint": "^16.8.1",
     "stylelint-config-standard": "^36.0.1",
     "ts-jest": "^29.2.5",
