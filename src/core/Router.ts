@@ -1,8 +1,8 @@
-import AuthController from "@/controllers/AuthController";
+import AuthController from "../controllers/AuthController";
 import Route, { BlockConstructable } from "./Route";
 import store from "./Store";
 
-class Router {
+export class Router {
   private __instance: Router | null = null;
 
   private _currentRoute: Route | null = null;
