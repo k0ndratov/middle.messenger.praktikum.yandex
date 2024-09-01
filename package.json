@@ -6,6 +6,11 @@
   "browserslist": [
     "cover 99.5%"
   ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run precommit"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -17,8 +22,9 @@
     "stylelint": "stylelint ./src/**/*.css",
     "stylelint:fix": "stylelint ./src/**/*.css --fix",
     "test": "jest",
-    "lint": "npm audit && npm run tslint && npm run eslint && npm run stylelint && npm run test && npm run build",
-    "prepare": "husky"
+    "lint": "npm run tslint && npm run eslint && npm run stylelint",
+    "prepare": "husky",
+    "precommit": "lint-staged && npm run test"
   },
   "devDependencies": {
     "@types/chai": "^4.3.19",
@@ -33,6 +39,7 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^25.0.0",
+    "lint-staged": "15.2.10",
     "mocha": "^10.7.3",
     "postcss": "8.4.31",
     "stylelint": "^16.8.1",
