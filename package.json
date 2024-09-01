@@ -17,7 +17,7 @@
     "stylelint": "stylelint ./src/**/*.css",
     "stylelint:fix": "stylelint ./src/**/*.css --fix",
     "test": "jest",
-    "lint": "npm run tslint && npm run eslint && npm run stylelint && npm run test && npm run build"
+    "lint": "npm audit && npm run tslint && npm run eslint && npm run stylelint && npm run test && npm run build"
   },
   "pre-commit": [
     "lint"
@@ -35,8 +35,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jsdom": "^25.0.0",
     "mocha": "^10.7.3",
-    "postcss": "^8.4.39",
-    "postcss-extend": "^1.0.5",
+    "postcss": "8.4.31",
     "pre-commit": "^1.2.2",
     "stylelint": "^16.8.1",
     "stylelint-config-standard": "^36.0.1",
