@@ -1,4 +1,4 @@
-import HTTPTransport from "@/core/HTTPTransport";
+import HTTPTransport from "../core/HTTPTransport";
 
 export abstract class BaseAPI {
   public http: HTTPTransport;
